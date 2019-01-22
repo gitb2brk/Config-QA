@@ -1,0 +1,31 @@
+app:
+  version: ^project.version^
+  name: ^project.name^
+
+spring:
+  jpa:
+    database: postgresql
+    #show-sql: true
+    hibernate:
+      ddl-auto: validate
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://127.0.0.1:5432/SEMIP
+    username: postgres
+    password: 123
+    driverClassName: org.postgresql.Driver
+    #sql-script-encoding: UTF-8
+  data:
+    mongodb:
+      host: 127.0.0.1
+      port: 27017
+      database: repo_receta
+
+eureka:
+  instance:
+    metadata-map:
+      management:
+        port: 9090
+
+ms-rioblanco.url: http://192.168.1.49/rioblanco/v1
+ms-rioblanco.url-local: http://localhost:8090/rioblanco/v1
