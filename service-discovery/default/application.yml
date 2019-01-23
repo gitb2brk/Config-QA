@@ -1,0 +1,28 @@
+eureka:
+  server:
+    enable-self-preservation: true
+    wait-time-in-ms-when-sync-empty: 5000
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 10
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+ 
+security:
+  basic:
+    enabled: true
+  user:
+    name: eureka
+    password: khTUcUUQ33WkJGC
+    role: ADMIN
+    
+logging:  
+#  file: logs/${spring.application.name}.log
+  level:
+    org.springframework.cloud.netflix.eureka: 'DEBUG'
+    org.springframework.cloud: 'DEBUG'
+    com.atsistemas: 'DEBUG'
