@@ -1,0 +1,61 @@
+spring:
+  rabbitmq:
+    addresses: ${vcap.services.${PREFIX:}rabbitmq.credentials.uri:amqp://${RABBITMQ_HOST:172.18.0.3}:${RABBITMQ_PORT:5672}}
+   
+zuul:
+  add-host-header: true
+  ignore-security-headers: false
+  sensitiveHeaders:
+  prefix: /api
+  ignored-services: '*'
+  routes:
+    ms-paciente:
+      path: /ms-rio-blanco/**
+      serviceId: MS-RIO-BLANCO
+      stripPrefix: false
+  ratelimit:
+    enabled: false
+    repository: IN_MEMORY
+    behind-proxy: true
+    default-policy: #optional - will apply unless specific policy exists
+      limit: 20 #optional - request number limit per refresh interval window
+      quota: 1000 #optional - request time limit per refresh interval window (in seconds)
+      refresh-interval: 60 #default value (in seconds)
+  semaphore:
+    #com.netflix.hystrix.exception.HystrixRuntimeException: "microservice" could not acquire a semaphore for execution and no fallback available.
+    max-semaphores: 10000
+  
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+          semaphore:
+            maxConcurrentRequests: 1500
+        timeout:
+          enabled: false
+
+ribbon:
+  ConnectTimeout: 30000
+  ReadTimeout: 60000
+  eureka:
+    enabled: true   
+  eager-load:
+    enabled: false
+    
+security:
+  basic:
+    enabled: false
+  user:
+    name: zuul
+    password: a39WqtRWAaXhckj
+    role: ADMIN
+
+logging:  
+#  file: logs/${spring.application.name}.log
+  level:
+    org.springframework.cloud.netflix.zuul: 'DEBUG'
+    org.springframework.cloud.netflix.ribbon: 'DEBUG'
+    org.springframework.cloud: 'DEBUG'
+    com.atsistemas: 'DEBUG'
