@@ -28,4 +28,3 @@ eureka:
         port: 9090
 
 ms-rioblanco.url: http://200.42.173.148:8080/rioblanco/v1/
-ms-rioblanco.url-local: http://localhost:8090/rioblanco/v1
