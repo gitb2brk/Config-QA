@@ -10,11 +10,10 @@ spring:
       ddl-auto: validate
   datasource:
     platform: postgres
-    url: jdbc:postgresql://127.0.0.1:5432/SEMIP
+    url: jdbc:postgresql://10.40.4.101:5432/SEMIP
     username: postgres
-    password: 123
+    password: YPW4xw8qyNqskRp
     driverClassName: org.postgresql.Driver
-    #sql-script-encoding: UTF-8
   data:
     mongodb:
       host: 127.0.0.1
