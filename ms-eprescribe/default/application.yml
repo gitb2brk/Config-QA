@@ -16,7 +16,7 @@ spring:
     driverClassName: org.postgresql.Driver
   data:
     mongodb:
-      host: 10.40.4.101
+      host: 172.18.0.90
       port: 27017
       database: repo_receta
 
