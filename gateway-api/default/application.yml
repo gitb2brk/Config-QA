@@ -9,33 +9,21 @@ zuul:
   prefix: /api
   ignored-services: '*'
   routes:
-    ms-paciente:
-      path: /ms-rio-blanco/**
-      serviceId: MS-RIO-BLANCO
+    security-server:
+      path: /oauth/**
+      serviceId: OAUTH-SERVER
       stripPrefix: false
-  ratelimit:
-    enabled: false
-    repository: IN_MEMORY
-    behind-proxy: true
-    default-policy: #optional - will apply unless specific policy exists
-      limit: 20 #optional - request number limit per refresh interval window
-      quota: 1000 #optional - request time limit per refresh interval window (in seconds)
-      refresh-interval: 60 #default value (in seconds)
-  semaphore:
-    #com.netflix.hystrix.exception.HystrixRuntimeException: "microservice" could not acquire a semaphore for execution and no fallback available.
-    max-semaphores: 10000
+    ratelimit:
+      enabled: false
+      repository: IN_MEMORY
+      behind-proxy: true
+      default-policy: #optional - will apply unless specific policy exists
+        limit: 20 #optional - request number limit per refresh interval window
+        quota: 1000 #optional - request time limit per refresh interval window (in seconds)
+        refresh-interval: 60 #default value (in seconds)
+    
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
   
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          strategy: SEMAPHORE
-          semaphore:
-            maxConcurrentRequests: 1500
-        timeout:
-          enabled: false
-
 ribbon:
   ConnectTimeout: 30000
   ReadTimeout: 60000

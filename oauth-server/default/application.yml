@@ -1,0 +1,15 @@
+security:
+  basic:
+    enabled: false
+  user:
+    name: oauth
+    password: tvmpGBG7kX2WYJM
+    role: ADMIN
+    
+logging:  
+#  file: logs/${spring.application.name}.log
+  level:
+    org.springframework.security.authentication: 'INFO'
+    org.springframework.security.web: 'INFO'
+    org.springframework.cloud: 'DEBUG'
+    com.atsistemas: 'DEBUG'

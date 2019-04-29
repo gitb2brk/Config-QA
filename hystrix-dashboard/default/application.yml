@@ -1,0 +1,23 @@
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: THREAD
+          thread:
+            timeoutInMilliseconds: 60000
+
+security:
+  basic:
+    enabled: true
+  user:
+    name: hystrix
+    password: 2tanhY4x9jNbBKQ
+    role: ADMIN
+    
+logging:  
+#  file: logs/${spring.application.name}.log
+  level:
+    org.springframework.cloud.netflix.hystrix: 'DEBUG'
+    org.springframework.cloud: 'DEBUG'
+    com.atsistemas: 'DEBUG'
