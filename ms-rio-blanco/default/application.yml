@@ -6,9 +6,3 @@ spring:
     username: CONSFARMACIA
     password: 12345678
     driver-class-name: oracle.jdbc.driver.OracleDriver
-    
-eureka:
-  instance:
-    metadata-map:
-      management:
-        port: 9090
