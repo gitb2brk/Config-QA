@@ -10,15 +10,15 @@ spring:
       ddl-auto: validate
   datasource:
     platform: postgres
-    url: jdbc:postgresql://10.40.4.101:5432/SEMIP
-    username: postgres
-    password: YPW4xw8qyNqskRp
+    url: ${URL_DATA:jdbc:postgresql://10.40.4.101:5432/SEMIP}
+    username: ${USER_DATA:postgres}
+    password: ${PW_DATA:YPW4xw8qyNqskRp}
     driverClassName: org.postgresql.Driver
   data:
     mongodb:
-      host: 10.40.4.101
+      host: ${URL_DOCUMENT:10.40.4.101}
       port: 27017
-      database: repo_receta
+      database: ${DB_DOCUMENT:repo_receta}
 
 eureka:
   instance:
